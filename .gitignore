@@ -3,3 +3,4 @@
 .env.prod
 db-data
 .env.prod.railway
+node_modules
