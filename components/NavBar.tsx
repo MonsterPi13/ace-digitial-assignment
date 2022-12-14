@@ -13,9 +13,10 @@ export default function NavBar(props: JSX.HTMLAttributes<HTMLButtonElement>) {
           <h3 class="text-[#dde5b6] text-xl">MY DOTA2 DATA</h3>
         </a>
 
-        <button
+        <a
           type="button"
           class="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2"
+          href="/auth/github"
         >
           <svg
             class="mr-2 -ml-1 w-4 h-4"
@@ -34,7 +35,7 @@ export default function NavBar(props: JSX.HTMLAttributes<HTMLButtonElement>) {
             </path>
           </svg>
           Login with Github
-        </button>
+        </a>
       </div>
     </nav>
   );
