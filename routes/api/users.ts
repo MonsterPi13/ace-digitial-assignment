@@ -1,15 +1,6 @@
 import { Handlers } from "$fresh/server.ts";
-import { PrismaClient } from "../../generated/client/deno/edge.ts";
 
-import config from "@/utils/config.ts";
-
-const prisma = new PrismaClient({
-  datasources: {
-    db: {
-      url: config.DATABASE_URL,
-    },
-  },
-});
+import prisma from "@/utils/prisma.ts";
 
 export const handler: Handlers = {
   async GET(_req) {

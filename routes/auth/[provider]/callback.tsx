@@ -3,6 +3,8 @@ import { Providers } from "denoGrant";
 
 import config from "@/utils/config.ts";
 import denoGrant from "@/utils/denoGrant.ts";
+import prisma from "@/utils/prisma.ts";
+import { Prisma } from "@/generated/client/deno/edge.ts";
 
 export const handler: Handlers = {
   async GET(request, ctx) {
@@ -19,28 +21,27 @@ export const handler: Handlers = {
             Providers.github,
             token.accessToken,
           );
-          console.log(profile);
+
+          if (profile) {
+            const { id, avatar_url, login } = profile;
+
+            const data: Prisma.UserCreateInput = {
+              avatar_url,
+              provider_type: providerType,
+              provider_userId: Number(id),
+              username: login,
+              created_at: new Date(),
+            };
+
+            const result = await prisma.user.create({
+              data,
+            });
+
+            return Response.json(result);
+          }
         }
       }
     }
     return Response.redirect(config.base_url);
   },
 };
-
-// app.get("/auth/github", async (ctx) => {
-//   const code = ctx.query["code"];
-//   const token = await denoGrant.getToken(
-//     Providers.github,
-//     `${BASE_URL}/auth/github?code=${code}&scope=`,
-//   );
-
-//   if (token && "accessToken" in token) {
-//     const profile = await denoGrant.getProfile(
-//       Providers.github,
-//       token.accessToken,
-//     );
-//     return ctx.redirect(`/u/${profile.login}`);
-//   }
-
-//   return { err: "some error" };
-// });
