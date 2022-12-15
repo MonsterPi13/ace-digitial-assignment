@@ -11,7 +11,11 @@ import * as $4 from "./routes/dashboard/_middleware.ts";
 import * as $5 from "./routes/dashboard/index.tsx";
 import * as $6 from "./routes/index.tsx";
 import * as $7 from "./routes/logout.ts";
-import * as $$0 from "./islands/UserAvatarButton.tsx";
+import * as $$0 from "./islands/BarChartContainer.tsx";
+import * as $$1 from "./islands/DoughnutChartContainer.tsx";
+import * as $$2 from "./islands/LineChartContainer.tsx";
+import * as $$3 from "./islands/PieChartContainer.tsx";
+import * as $$4 from "./islands/UserAvatarButton.tsx";
 
 const manifest = {
   routes: {
@@ -25,7 +29,11 @@ const manifest = {
     "./routes/logout.ts": $7,
   },
   islands: {
-    "./islands/UserAvatarButton.tsx": $$0,
+    "./islands/BarChartContainer.tsx": $$0,
+    "./islands/DoughnutChartContainer.tsx": $$1,
+    "./islands/LineChartContainer.tsx": $$2,
+    "./islands/PieChartContainer.tsx": $$3,
+    "./islands/UserAvatarButton.tsx": $$4,
   },
   baseUrl: import.meta.url,
   config,

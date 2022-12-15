@@ -6,7 +6,7 @@ import { PropsWithUser } from "../schemas/PropsWithUser.ts";
 
 type LayoutProps = PropsWithUser;
 
-const Layout: FunctionalComponent<LayoutProps> = ({ user }) => {
+const Layout: FunctionalComponent<LayoutProps> = ({ user, children }) => {
   return (
     <>
       <Head>
@@ -17,11 +17,7 @@ const Layout: FunctionalComponent<LayoutProps> = ({ user }) => {
         <NavBar user={user} />
 
         <main class="flex-1 w-full overflow-y-auto">
-          <img
-            src="/images/illustration/drow_ranger.jpeg"
-            alt=""
-            class="block mx-auto my-10 w-1/2 rounded-sm sm:rounded-3xl max-w-2xl"
-          />
+          {children}
         </main>
       </div>
     </>

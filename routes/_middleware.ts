@@ -1,6 +1,6 @@
 // routes/_middleware.ts
 import { MiddlewareHandlerContext } from "$fresh/server.ts";
-import { State } from "@/schemas/State.ts";
+import State from "@/schemas/State.ts";
 import { verifySignedCookie } from "squishyCookies";
 
 import config from "@/utils/config.ts";
