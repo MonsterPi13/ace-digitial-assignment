@@ -8,7 +8,8 @@ const denoGrant = new DenoGrant({
     provider: Providers.github,
     client_id: config.oauth.github.client_id,
     client_secret: config.oauth.github.client_secret,
-    redirect_path: `${config.base_url}/auth/github/callback`,
+    redirect_path: "/auth/github/callback",
+    redirect_uri: `${config.base_url}/auth/github/callback`,
     scope: "",
   }],
 });
