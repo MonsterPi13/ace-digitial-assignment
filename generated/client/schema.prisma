@@ -22,5 +22,6 @@ model User {
   provider_userId   Int             @unique
   username          String
   avatar_url        String
+  html_url          String
   created_at        DateTime        @default(now())
 }

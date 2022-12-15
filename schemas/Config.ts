@@ -30,6 +30,7 @@ export const ConfigSchema = z.object({
       ),
     }),
   }),
+  cookie_secret: z.string().min(1, getErrorMessage(EnvNames.COOKIE_SECRET)),
 });
 
 export type Config = z.infer<typeof ConfigSchema>;

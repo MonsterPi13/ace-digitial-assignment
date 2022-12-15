@@ -22,6 +22,7 @@ export type User = {
   provider_userId: number
   username: string
   avatar_url: string
+  html_url: string
   created_at: Date
 }
 
@@ -848,6 +849,7 @@ export namespace Prisma {
     provider_userId: number | null
     username: string | null
     avatar_url: string | null
+    html_url: string | null
     created_at: Date | null
   }
 
@@ -857,6 +859,7 @@ export namespace Prisma {
     provider_userId: number | null
     username: string | null
     avatar_url: string | null
+    html_url: string | null
     created_at: Date | null
   }
 
@@ -866,6 +869,7 @@ export namespace Prisma {
     provider_userId: number
     username: number
     avatar_url: number
+    html_url: number
     created_at: number
     _all: number
   }
@@ -887,6 +891,7 @@ export namespace Prisma {
     provider_userId?: true
     username?: true
     avatar_url?: true
+    html_url?: true
     created_at?: true
   }
 
@@ -896,6 +901,7 @@ export namespace Prisma {
     provider_userId?: true
     username?: true
     avatar_url?: true
+    html_url?: true
     created_at?: true
   }
 
@@ -905,6 +911,7 @@ export namespace Prisma {
     provider_userId?: true
     username?: true
     avatar_url?: true
+    html_url?: true
     created_at?: true
     _all?: true
   }
@@ -1007,6 +1014,7 @@ export namespace Prisma {
     provider_userId: number
     username: string
     avatar_url: string
+    html_url: string
     created_at: Date
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
@@ -1035,6 +1043,7 @@ export namespace Prisma {
     provider_userId?: boolean
     username?: boolean
     avatar_url?: boolean
+    html_url?: boolean
     created_at?: boolean
   }
 
@@ -1833,6 +1842,7 @@ export namespace Prisma {
     provider_userId: 'provider_userId',
     username: 'username',
     avatar_url: 'avatar_url',
+    html_url: 'html_url',
     created_at: 'created_at'
   };
 
@@ -1853,6 +1863,7 @@ export namespace Prisma {
     provider_userId?: IntFilter | number
     username?: StringFilter | string
     avatar_url?: StringFilter | string
+    html_url?: StringFilter | string
     created_at?: DateTimeFilter | Date | string
   }
 
@@ -1862,6 +1873,7 @@ export namespace Prisma {
     provider_userId?: SortOrder
     username?: SortOrder
     avatar_url?: SortOrder
+    html_url?: SortOrder
     created_at?: SortOrder
   }
 
@@ -1876,6 +1888,7 @@ export namespace Prisma {
     provider_userId?: SortOrder
     username?: SortOrder
     avatar_url?: SortOrder
+    html_url?: SortOrder
     created_at?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
@@ -1893,6 +1906,7 @@ export namespace Prisma {
     provider_userId?: IntWithAggregatesFilter | number
     username?: StringWithAggregatesFilter | string
     avatar_url?: StringWithAggregatesFilter | string
+    html_url?: StringWithAggregatesFilter | string
     created_at?: DateTimeWithAggregatesFilter | Date | string
   }
 
@@ -1901,6 +1915,7 @@ export namespace Prisma {
     provider_userId: number
     username: string
     avatar_url: string
+    html_url: string
     created_at?: Date | string
   }
 
@@ -1910,6 +1925,7 @@ export namespace Prisma {
     provider_userId: number
     username: string
     avatar_url: string
+    html_url: string
     created_at?: Date | string
   }
 
@@ -1918,6 +1934,7 @@ export namespace Prisma {
     provider_userId?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     avatar_url?: StringFieldUpdateOperationsInput | string
+    html_url?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -1927,6 +1944,7 @@ export namespace Prisma {
     provider_userId?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     avatar_url?: StringFieldUpdateOperationsInput | string
+    html_url?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -1936,6 +1954,7 @@ export namespace Prisma {
     provider_userId: number
     username: string
     avatar_url: string
+    html_url: string
     created_at?: Date | string
   }
 
@@ -1944,6 +1963,7 @@ export namespace Prisma {
     provider_userId?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     avatar_url?: StringFieldUpdateOperationsInput | string
+    html_url?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -1953,6 +1973,7 @@ export namespace Prisma {
     provider_userId?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     avatar_url?: StringFieldUpdateOperationsInput | string
+    html_url?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2006,6 +2027,7 @@ export namespace Prisma {
     provider_userId?: SortOrder
     username?: SortOrder
     avatar_url?: SortOrder
+    html_url?: SortOrder
     created_at?: SortOrder
   }
 
@@ -2020,6 +2042,7 @@ export namespace Prisma {
     provider_userId?: SortOrder
     username?: SortOrder
     avatar_url?: SortOrder
+    html_url?: SortOrder
     created_at?: SortOrder
   }
 
@@ -2029,6 +2052,7 @@ export namespace Prisma {
     provider_userId?: SortOrder
     username?: SortOrder
     avatar_url?: SortOrder
+    html_url?: SortOrder
     created_at?: SortOrder
   }
 

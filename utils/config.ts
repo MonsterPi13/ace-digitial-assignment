@@ -18,6 +18,7 @@ const envConfig: Config = {
     },
   },
   DATABASE_URL: Deno.env.get(EnvNames.DATABASE_URL) || "",
+  cookie_secret: Deno.env.get(EnvNames.COOKIE_SECRET) || "",
 };
 
 const config = ConfigSchema.parse(envConfig);

@@ -11,6 +11,8 @@
     "zod": "https://deno.land/x/zod@v3.20.2/mod.ts",
     "dotEnv": "https://deno.land/std@0.167.0/dotenv/mod.ts",
     "denoGrant": "https://deno.land/x/deno_grant@v0.3.0/mod.ts",
+    "squishyCookies": "https://deno.land/x/squishy_cookies@v0.2.4/mod.ts",
+    "cookie": "https://deno.land/std@0.168.0/http/cookie.ts",
     "@/": "./"
   }
 }

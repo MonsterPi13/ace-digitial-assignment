@@ -112,6 +112,7 @@ exports.Prisma.UserScalarFieldEnum = makeEnum({
   provider_userId: 'provider_userId',
   username: 'username',
   avatar_url: 'avatar_url',
+  html_url: 'html_url',
   created_at: 'created_at'
 });
 exports.Porvider_type = makeEnum({
