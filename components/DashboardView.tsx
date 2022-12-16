@@ -11,18 +11,17 @@ const DashboardView: FunctionalComponent = () => {
       <Head>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       </Head>
-      <section class="grid grid-cols-2 grid-rows-2 gap-4 h-full p-8">
-        <div class="bg-white p-8">
+      <section class="grid grid-cols-3 grid-rows-2 gap-4 h-full p-8">
+        <div class="bg-[#FAF7F0] p-8">
           <BarChartContainer />
         </div>
-        <div class="bg-white p-8">
+        <div class="bg-[#FAF7F0] p-8">
           <LineChartContainer />
         </div>
-        <div class="bg-white p-8">
-          <PieChartContainer />
-        </div>
-        <div class="bg-white">
+        <div class="bg-[#FAF7F0] p-8">
           <DoughnutChartContainer />
+        </div>
+        <div class="col-span-3 bg-[#FAF7F0]">
         </div>
       </section>
     </>

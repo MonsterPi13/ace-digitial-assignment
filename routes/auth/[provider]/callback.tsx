@@ -11,8 +11,6 @@ export const handler: Handlers = {
   async GET(request, ctx) {
     const providerType = ctx.params.provider.toLowerCase();
 
-    console.log("${request.url}", `${request.url}`);
-
     switch (providerType) {
       case Providers.github: {
         const token = await denoGrant.getToken(
