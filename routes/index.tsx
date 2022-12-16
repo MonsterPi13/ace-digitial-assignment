@@ -2,6 +2,7 @@ import { Handlers } from "$fresh/server.ts";
 
 import config from "@/utils/config.ts";
 import Layout from "@/layout/index.tsx";
+import LandingView from "../components/LandingView.tsx";
 
 export const handler: Handlers = {
   GET(req: Request, ctx) {
@@ -16,11 +17,7 @@ export const handler: Handlers = {
 export default function Home() {
   return (
     <Layout>
-      <img
-        src="/images/illustration/drow_ranger.jpeg"
-        alt=""
-        class="block mx-auto my-10 w-1/2 rounded-sm sm:rounded-3xl max-w-2xl"
-      />
+      <LandingView />
     </Layout>
   );
 }

@@ -11,7 +11,7 @@ const DashboardView: FunctionalComponent = () => {
       <Head>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       </Head>
-      <section class="grid grid-cols-2 grid-rows-2 gap-4 h-full">
+      <section class="grid grid-cols-2 grid-rows-2 gap-4 h-full p-8">
         <div class="bg-white p-8">
           <BarChartContainer />
         </div>
