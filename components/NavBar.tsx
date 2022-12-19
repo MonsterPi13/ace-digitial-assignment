@@ -6,7 +6,7 @@ import DrawerButton from "@/islands/DrawerButton.tsx";
 
 type NavProps = { isShownDrawButton: boolean } & PropsWithUser;
 
-const NavBar: FunctionalComponent<PropsWithUser> = (
+const NavBar: FunctionalComponent<NavProps> = (
   { user, isShownDrawButton = false },
 ) => {
   return (
