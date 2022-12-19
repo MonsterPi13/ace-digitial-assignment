@@ -10,7 +10,7 @@ const NavBar: FunctionalComponent<NavProps> = (
   { user, isShownDrawButton = false },
 ) => {
   return (
-    <nav class="px-2 bg-[#adc178] border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+    <nav class="px-2 bg-[#adc178] border-gray-700">
       <div class="container flex flex-wrap items-center justify-between mx-auto py-1 sm:py-3">
         <div class="flex items-center">
           {isShownDrawButton && <DrawerButton />}
