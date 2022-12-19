@@ -1,4 +1,15 @@
+import { useRef } from "preact/hooks";
+
 const DrawerButton = () => {
+  const selectorRef = useRef<HTMLSelectElement>(null);
+
+  const handleRedirectBtnClick = () => {
+    const selectIndex = selectorRef.current?.selectedIndex;
+    if (selectIndex && selectIndex !== 0) {
+      const selectedValue = selectorRef.current.options[selectIndex].value;
+      window.location.href = `/dashboard/${selectedValue}`;
+    }
+  };
   return (
     <>
       <div class="text-center">
@@ -9,9 +20,9 @@ const DrawerButton = () => {
             stroke="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
-            data-drawer-target="drawer-example"
-            data-drawer-show="drawer-example"
-            aria-controls="drawer-example"
+            data-drawer-target="filter-drawer"
+            data-drawer-show="filter-drawer"
+            aria-controls="filter-drawer"
           >
             <path
               stroke-linecap="round"
@@ -25,9 +36,8 @@ const DrawerButton = () => {
       </div>
 
       <div
-        id="drawer-example"
+        id="filter-drawer"
         class="fixed z-40 h-screen p-4 overflow-y-auto bg-white w-80 dark:bg-gray-800 transition-transform left-0 top-0 -translate-x-full"
-        tabindex="-1"
         aria-labelledby="drawer-label"
       >
         <h5
@@ -47,12 +57,12 @@ const DrawerButton = () => {
               clip-rule="evenodd"
             >
             </path>
-          </svg>Info
+          </svg>Filters
         </h5>
         <button
           type="button"
-          data-drawer-dismiss="drawer-example"
-          aria-controls="drawer-example"
+          data-drawer-dismiss="filter-drawer"
+          aria-controls="filter-drawer"
           class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
         >
           <svg
@@ -71,29 +81,47 @@ const DrawerButton = () => {
           </svg>
           <span class="sr-only">Close menu</span>
         </button>
-        <p class="mb-6 text-sm text-gray-500 dark:text-gray-400">
-          Supercharge your hiring by taking advantage of our{" "}
-          <a
-            href="#"
-            class="text-blue-600 underline dark:text-blue-500 hover:no-underline"
+        <div class="mb-4">
+          <label
+            for="guests"
+            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
           >
-            limited-time sale
-          </a>{" "}
-          for Flowbite Docs + Job Board. Unlimited access to over 190K
-          top-ranked candidates and the #1 design job board.
-        </p>
-        <div class="grid grid-cols-2 gap-4">
-          <a
-            href="#"
-            class="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-          >
-            Learn more
-          </a>
-          <a
-            href="#"
+            Invite guests
+          </label>
+          <div class="relative">
+            <label
+              for="edition"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Select an edition of The International
+            </label>
+            <select
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              ref={selectorRef}
+            >
+              <option selected>
+                please select
+              </option>
+              <option value="ti11">Ti11</option>
+              <option value="ti10">Ti10</option>
+              <option value="ti9">Ti9</option>
+              <option value="ti8">Ti8</option>
+              <option value="ti7">Ti7</option>
+              <option value="ti6">Ti6</option>
+              <option value="ti5">Ti5</option>
+              <option value="ti4">Ti4</option>
+              <option value="ti3">Ti3</option>
+              <option value="ti2">Ti2</option>
+              <option value="ti1">Ti1</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex justify-end">
+          <button
+            onClick={handleRedirectBtnClick}
             class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           >
-            Get access{" "}
+            Redirect
             <svg
               class="w-4 h-4 ml-2"
               aria-hidden="true"
@@ -108,7 +136,7 @@ const DrawerButton = () => {
               >
               </path>
             </svg>
-          </a>
+          </button>
         </div>
       </div>
     </>

@@ -1,6 +1,9 @@
 {
   "tasks": {
-    "start": "deno run -A --watch=static/,routes/ dev.ts"
+    "start": "deno run -A --watch=static/,routes/ dev.ts",
+    "generate:schema": "deno run -A --unstable npm:prisma db push",
+    "generate:client": "deno run -A --unstable npm:prisma generate --data-proxy",
+    "generate:data": "deno run -A prisma/seed/init-data.ts"
   },
   "importMap": "./import_map.json",
   "compilerOptions": {

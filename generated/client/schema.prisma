@@ -16,6 +16,29 @@ enum Porvider_type {
   github
 }
 
+enum Region_type {
+  WEU
+  EEU
+  CN
+  NA
+  SA
+  SEA
+}
+
+enum Annual_edition {
+  Ti11
+  Ti10
+  Ti9
+  Ti8
+  Ti7
+  Ti6
+  Ti5
+  Ti4
+  Ti3
+  Ti2
+  Ti1
+}
+
 model User {
   id                Int             @id @default(autoincrement())
   provider_type     Porvider_type
@@ -33,3 +56,14 @@ model HeroList {
   bio               String
   background_color  String
 }
+
+model PrizePool {
+  id                Int     @id @default(autoincrement())
+  participant       String
+  place             Int
+  prize             Int
+  date              DateTime
+  region            Region_type
+  annualEdition     Annual_edition
+}
+

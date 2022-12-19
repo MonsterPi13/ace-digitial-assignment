@@ -28,7 +28,7 @@ export const handler: Handlers<PropsWithLandingPage> = {
 
 export default function Home({ data }: PageProps<PropsWithLandingPage>) {
   return (
-    <Layout hero={data.hero}>
+    <Layout isShownDrawButton={false} hero={data.hero}>
       <LandingView hero={data.hero} />
     </Layout>
   );

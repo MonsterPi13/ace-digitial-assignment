@@ -5,9 +5,16 @@ import { FunctionalComponent } from "preact";
 import { PropsWithUser } from "@/schemas/PropsWithUser.ts";
 import { PropsWithLandingPage } from "@/schemas/PropsWithLandingPage.ts";
 
-type LayoutProps = PropsWithLandingPage & PropsWithUser;
+type LayoutProps =
+  & {
+    isShownDrawButton: boolean;
+  }
+  & PropsWithLandingPage
+  & PropsWithUser;
 
-const Layout: FunctionalComponent<LayoutProps> = ({ hero, user, children }) => {
+const Layout: FunctionalComponent<LayoutProps> = (
+  { isShownDrawButton, hero, user, children },
+) => {
   const bgColor = hero ? `bg-[${hero.background_color}]` : "";
 
   return (
@@ -22,7 +29,7 @@ const Layout: FunctionalComponent<LayoutProps> = ({ hero, user, children }) => {
         <link rel="stylesheet" href="/global.css" />
       </Head>
       <div class={`flex flex-col w-screen h-screen ${bgColor}`}>
-        <NavBar user={user} />
+        <NavBar isShownDrawButton={isShownDrawButton} user={user} />
 
         <main class="flex-1 w-full overflow-y-auto">
           {children}

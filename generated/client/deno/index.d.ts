@@ -38,6 +38,20 @@ export type HeroList = {
   background_color: string
 }
 
+/**
+ * Model PrizePool
+ * 
+ */
+export type PrizePool = {
+  id: number
+  participant: string
+  place: number
+  prize: number
+  date: Date
+  region: Region_type
+  annualEdition: Annual_edition
+}
+
 
 /**
  * Enums
@@ -46,11 +60,40 @@ export type HeroList = {
 // Based on
 // https://github.com/microsoft/TypeScript/issues/3192#issuecomment-261720275
 
+export const Annual_edition: {
+  Ti11: 'Ti11',
+  Ti10: 'Ti10',
+  Ti9: 'Ti9',
+  Ti8: 'Ti8',
+  Ti7: 'Ti7',
+  Ti6: 'Ti6',
+  Ti5: 'Ti5',
+  Ti4: 'Ti4',
+  Ti3: 'Ti3',
+  Ti2: 'Ti2',
+  Ti1: 'Ti1'
+};
+
+export type Annual_edition = (typeof Annual_edition)[keyof typeof Annual_edition]
+
+
 export const Porvider_type: {
   github: 'github'
 };
 
 export type Porvider_type = (typeof Porvider_type)[keyof typeof Porvider_type]
+
+
+export const Region_type: {
+  WEU: 'WEU',
+  EEU: 'EEU',
+  CN: 'CN',
+  NA: 'NA',
+  SA: 'SA',
+  SEA: 'SEA'
+};
+
+export type Region_type = (typeof Region_type)[keyof typeof Region_type]
 
 
 /**
@@ -189,6 +232,16 @@ export class PrismaClient<
     * ```
     */
   get heroList(): Prisma.HeroListDelegate<GlobalReject>;
+
+  /**
+   * `prisma.prizePool`: Exposes CRUD operations for the **PrizePool** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PrizePools
+    * const prizePools = await prisma.prizePool.findMany()
+    * ```
+    */
+  get prizePool(): Prisma.PrizePoolDelegate<GlobalReject>;
 }
 
 export namespace Prisma {
@@ -674,7 +727,8 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
-    HeroList: 'HeroList'
+    HeroList: 'HeroList',
+    PrizePool: 'PrizePool'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -2790,6 +2844,993 @@ export namespace Prisma {
 
 
   /**
+   * Model PrizePool
+   */
+
+
+  export type AggregatePrizePool = {
+    _count: PrizePoolCountAggregateOutputType | null
+    _avg: PrizePoolAvgAggregateOutputType | null
+    _sum: PrizePoolSumAggregateOutputType | null
+    _min: PrizePoolMinAggregateOutputType | null
+    _max: PrizePoolMaxAggregateOutputType | null
+  }
+
+  export type PrizePoolAvgAggregateOutputType = {
+    id: number | null
+    place: number | null
+    prize: number | null
+  }
+
+  export type PrizePoolSumAggregateOutputType = {
+    id: number | null
+    place: number | null
+    prize: number | null
+  }
+
+  export type PrizePoolMinAggregateOutputType = {
+    id: number | null
+    participant: string | null
+    place: number | null
+    prize: number | null
+    date: Date | null
+    region: Region_type | null
+    annualEdition: Annual_edition | null
+  }
+
+  export type PrizePoolMaxAggregateOutputType = {
+    id: number | null
+    participant: string | null
+    place: number | null
+    prize: number | null
+    date: Date | null
+    region: Region_type | null
+    annualEdition: Annual_edition | null
+  }
+
+  export type PrizePoolCountAggregateOutputType = {
+    id: number
+    participant: number
+    place: number
+    prize: number
+    date: number
+    region: number
+    annualEdition: number
+    _all: number
+  }
+
+
+  export type PrizePoolAvgAggregateInputType = {
+    id?: true
+    place?: true
+    prize?: true
+  }
+
+  export type PrizePoolSumAggregateInputType = {
+    id?: true
+    place?: true
+    prize?: true
+  }
+
+  export type PrizePoolMinAggregateInputType = {
+    id?: true
+    participant?: true
+    place?: true
+    prize?: true
+    date?: true
+    region?: true
+    annualEdition?: true
+  }
+
+  export type PrizePoolMaxAggregateInputType = {
+    id?: true
+    participant?: true
+    place?: true
+    prize?: true
+    date?: true
+    region?: true
+    annualEdition?: true
+  }
+
+  export type PrizePoolCountAggregateInputType = {
+    id?: true
+    participant?: true
+    place?: true
+    prize?: true
+    date?: true
+    region?: true
+    annualEdition?: true
+    _all?: true
+  }
+
+  export type PrizePoolAggregateArgs = {
+    /**
+     * Filter which PrizePool to aggregate.
+     * 
+    **/
+    where?: PrizePoolWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PrizePools to fetch.
+     * 
+    **/
+    orderBy?: Enumerable<PrizePoolOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     * 
+    **/
+    cursor?: PrizePoolWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PrizePools from the position of the cursor.
+     * 
+    **/
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PrizePools.
+     * 
+    **/
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PrizePools
+    **/
+    _count?: true | PrizePoolCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PrizePoolAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PrizePoolSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PrizePoolMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PrizePoolMaxAggregateInputType
+  }
+
+  export type GetPrizePoolAggregateType<T extends PrizePoolAggregateArgs> = {
+        [P in keyof T & keyof AggregatePrizePool]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePrizePool[P]>
+      : GetScalarType<T[P], AggregatePrizePool[P]>
+  }
+
+
+
+
+  export type PrizePoolGroupByArgs = {
+    where?: PrizePoolWhereInput
+    orderBy?: Enumerable<PrizePoolOrderByWithAggregationInput>
+    by: Array<PrizePoolScalarFieldEnum>
+    having?: PrizePoolScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PrizePoolCountAggregateInputType | true
+    _avg?: PrizePoolAvgAggregateInputType
+    _sum?: PrizePoolSumAggregateInputType
+    _min?: PrizePoolMinAggregateInputType
+    _max?: PrizePoolMaxAggregateInputType
+  }
+
+
+  export type PrizePoolGroupByOutputType = {
+    id: number
+    participant: string
+    place: number
+    prize: number
+    date: Date
+    region: Region_type
+    annualEdition: Annual_edition
+    _count: PrizePoolCountAggregateOutputType | null
+    _avg: PrizePoolAvgAggregateOutputType | null
+    _sum: PrizePoolSumAggregateOutputType | null
+    _min: PrizePoolMinAggregateOutputType | null
+    _max: PrizePoolMaxAggregateOutputType | null
+  }
+
+  type GetPrizePoolGroupByPayload<T extends PrizePoolGroupByArgs> = PrismaPromise<
+    Array<
+      PickArray<PrizePoolGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PrizePoolGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PrizePoolGroupByOutputType[P]>
+            : GetScalarType<T[P], PrizePoolGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PrizePoolSelect = {
+    id?: boolean
+    participant?: boolean
+    place?: boolean
+    prize?: boolean
+    date?: boolean
+    region?: boolean
+    annualEdition?: boolean
+  }
+
+
+  export type PrizePoolGetPayload<S extends boolean | null | undefined | PrizePoolArgs> =
+    S extends { select: any, include: any } ? 'Please either choose `select` or `include`' :
+    S extends true ? PrizePool :
+    S extends undefined ? never :
+    S extends { include: any } & (PrizePoolArgs | PrizePoolFindManyArgs)
+    ? PrizePool 
+    : S extends { select: any } & (PrizePoolArgs | PrizePoolFindManyArgs)
+      ? {
+    [P in TruthyKeys<S['select']>]:
+    P extends keyof PrizePool ? PrizePool[P] : never
+  } 
+      : PrizePool
+
+
+  type PrizePoolCountArgs = Merge<
+    Omit<PrizePoolFindManyArgs, 'select' | 'include'> & {
+      select?: PrizePoolCountAggregateInputType | true
+    }
+  >
+
+  export interface PrizePoolDelegate<GlobalRejectSettings extends Prisma.RejectOnNotFound | Prisma.RejectPerOperation | false | undefined> {
+    /**
+     * Find zero or one PrizePool that matches the filter.
+     * @param {PrizePoolFindUniqueArgs} args - Arguments to find a PrizePool
+     * @example
+     * // Get one PrizePool
+     * const prizePool = await prisma.prizePool.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends PrizePoolFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args: SelectSubset<T, PrizePoolFindUniqueArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'PrizePool'> extends True ? Prisma__PrizePoolClient<PrizePoolGetPayload<T>> : Prisma__PrizePoolClient<PrizePoolGetPayload<T> | null, null>
+
+    /**
+     * Find one PrizePool that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {PrizePoolFindUniqueOrThrowArgs} args - Arguments to find a PrizePool
+     * @example
+     * // Get one PrizePool
+     * const prizePool = await prisma.prizePool.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends PrizePoolFindUniqueOrThrowArgs>(
+      args?: SelectSubset<T, PrizePoolFindUniqueOrThrowArgs>
+    ): Prisma__PrizePoolClient<PrizePoolGetPayload<T>>
+
+    /**
+     * Find the first PrizePool that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrizePoolFindFirstArgs} args - Arguments to find a PrizePool
+     * @example
+     * // Get one PrizePool
+     * const prizePool = await prisma.prizePool.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends PrizePoolFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
+      args?: SelectSubset<T, PrizePoolFindFirstArgs>
+    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'PrizePool'> extends True ? Prisma__PrizePoolClient<PrizePoolGetPayload<T>> : Prisma__PrizePoolClient<PrizePoolGetPayload<T> | null, null>
+
+    /**
+     * Find the first PrizePool that matches the filter or
+     * throw `NotFoundError` if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrizePoolFindFirstOrThrowArgs} args - Arguments to find a PrizePool
+     * @example
+     * // Get one PrizePool
+     * const prizePool = await prisma.prizePool.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends PrizePoolFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, PrizePoolFindFirstOrThrowArgs>
+    ): Prisma__PrizePoolClient<PrizePoolGetPayload<T>>
+
+    /**
+     * Find zero or more PrizePools that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrizePoolFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PrizePools
+     * const prizePools = await prisma.prizePool.findMany()
+     * 
+     * // Get first 10 PrizePools
+     * const prizePools = await prisma.prizePool.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const prizePoolWithIdOnly = await prisma.prizePool.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends PrizePoolFindManyArgs>(
+      args?: SelectSubset<T, PrizePoolFindManyArgs>
+    ): PrismaPromise<Array<PrizePoolGetPayload<T>>>
+
+    /**
+     * Create a PrizePool.
+     * @param {PrizePoolCreateArgs} args - Arguments to create a PrizePool.
+     * @example
+     * // Create one PrizePool
+     * const PrizePool = await prisma.prizePool.create({
+     *   data: {
+     *     // ... data to create a PrizePool
+     *   }
+     * })
+     * 
+    **/
+    create<T extends PrizePoolCreateArgs>(
+      args: SelectSubset<T, PrizePoolCreateArgs>
+    ): Prisma__PrizePoolClient<PrizePoolGetPayload<T>>
+
+    /**
+     * Create many PrizePools.
+     *     @param {PrizePoolCreateManyArgs} args - Arguments to create many PrizePools.
+     *     @example
+     *     // Create many PrizePools
+     *     const prizePool = await prisma.prizePool.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends PrizePoolCreateManyArgs>(
+      args?: SelectSubset<T, PrizePoolCreateManyArgs>
+    ): PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a PrizePool.
+     * @param {PrizePoolDeleteArgs} args - Arguments to delete one PrizePool.
+     * @example
+     * // Delete one PrizePool
+     * const PrizePool = await prisma.prizePool.delete({
+     *   where: {
+     *     // ... filter to delete one PrizePool
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends PrizePoolDeleteArgs>(
+      args: SelectSubset<T, PrizePoolDeleteArgs>
+    ): Prisma__PrizePoolClient<PrizePoolGetPayload<T>>
+
+    /**
+     * Update one PrizePool.
+     * @param {PrizePoolUpdateArgs} args - Arguments to update one PrizePool.
+     * @example
+     * // Update one PrizePool
+     * const prizePool = await prisma.prizePool.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends PrizePoolUpdateArgs>(
+      args: SelectSubset<T, PrizePoolUpdateArgs>
+    ): Prisma__PrizePoolClient<PrizePoolGetPayload<T>>
+
+    /**
+     * Delete zero or more PrizePools.
+     * @param {PrizePoolDeleteManyArgs} args - Arguments to filter PrizePools to delete.
+     * @example
+     * // Delete a few PrizePools
+     * const { count } = await prisma.prizePool.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends PrizePoolDeleteManyArgs>(
+      args?: SelectSubset<T, PrizePoolDeleteManyArgs>
+    ): PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PrizePools.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrizePoolUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PrizePools
+     * const prizePool = await prisma.prizePool.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends PrizePoolUpdateManyArgs>(
+      args: SelectSubset<T, PrizePoolUpdateManyArgs>
+    ): PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one PrizePool.
+     * @param {PrizePoolUpsertArgs} args - Arguments to update or create a PrizePool.
+     * @example
+     * // Update or create a PrizePool
+     * const prizePool = await prisma.prizePool.upsert({
+     *   create: {
+     *     // ... data to create a PrizePool
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PrizePool we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends PrizePoolUpsertArgs>(
+      args: SelectSubset<T, PrizePoolUpsertArgs>
+    ): Prisma__PrizePoolClient<PrizePoolGetPayload<T>>
+
+    /**
+     * Count the number of PrizePools.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrizePoolCountArgs} args - Arguments to filter PrizePools to count.
+     * @example
+     * // Count the number of PrizePools
+     * const count = await prisma.prizePool.count({
+     *   where: {
+     *     // ... the filter for the PrizePools we want to count
+     *   }
+     * })
+    **/
+    count<T extends PrizePoolCountArgs>(
+      args?: Subset<T, PrizePoolCountArgs>,
+    ): PrismaPromise<
+      T extends _Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PrizePoolCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PrizePool.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrizePoolAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PrizePoolAggregateArgs>(args: Subset<T, PrizePoolAggregateArgs>): PrismaPromise<GetPrizePoolAggregateType<T>>
+
+    /**
+     * Group by PrizePool.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PrizePoolGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PrizePoolGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PrizePoolGroupByArgs['orderBy'] }
+        : { orderBy?: PrizePoolGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends TupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PrizePoolGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPrizePoolGroupByPayload<T> : PrismaPromise<InputErrors>
+
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PrizePool.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export class Prisma__PrizePoolClient<T, Null = never> implements PrismaPromise<T> {
+    [prisma]: true;
+    private readonly _dmmf;
+    private readonly _fetcher;
+    private readonly _queryType;
+    private readonly _rootField;
+    private readonly _clientMethod;
+    private readonly _args;
+    private readonly _dataPath;
+    private readonly _errorFormat;
+    private readonly _measurePerformance?;
+    private _isList;
+    private _callsite;
+    private _requestPromise?;
+    constructor(_dmmf: runtime.DMMFClass, _fetcher: PrismaClientFetcher, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
+    readonly [Symbol.toStringTag]: 'PrismaClientPromise';
+
+
+    private get _document();
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
+  }
+
+
+
+  // Custom InputTypes
+
+  /**
+   * PrizePool base type for findUnique actions
+   */
+  export type PrizePoolFindUniqueArgsBase = {
+    /**
+     * Select specific fields to fetch from the PrizePool
+     * 
+    **/
+    select?: PrizePoolSelect | null
+    /**
+     * Filter, which PrizePool to fetch.
+     * 
+    **/
+    where: PrizePoolWhereUniqueInput
+  }
+
+  /**
+   * PrizePool: findUnique
+   */
+  export interface PrizePoolFindUniqueArgs extends PrizePoolFindUniqueArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findUniqueOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * PrizePool findUniqueOrThrow
+   */
+  export type PrizePoolFindUniqueOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the PrizePool
+     * 
+    **/
+    select?: PrizePoolSelect | null
+    /**
+     * Filter, which PrizePool to fetch.
+     * 
+    **/
+    where: PrizePoolWhereUniqueInput
+  }
+
+
+  /**
+   * PrizePool base type for findFirst actions
+   */
+  export type PrizePoolFindFirstArgsBase = {
+    /**
+     * Select specific fields to fetch from the PrizePool
+     * 
+    **/
+    select?: PrizePoolSelect | null
+    /**
+     * Filter, which PrizePool to fetch.
+     * 
+    **/
+    where?: PrizePoolWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PrizePools to fetch.
+     * 
+    **/
+    orderBy?: Enumerable<PrizePoolOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PrizePools.
+     * 
+    **/
+    cursor?: PrizePoolWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PrizePools from the position of the cursor.
+     * 
+    **/
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PrizePools.
+     * 
+    **/
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PrizePools.
+     * 
+    **/
+    distinct?: Enumerable<PrizePoolScalarFieldEnum>
+  }
+
+  /**
+   * PrizePool: findFirst
+   */
+  export interface PrizePoolFindFirstArgs extends PrizePoolFindFirstArgsBase {
+   /**
+    * Throw an Error if query returns no results
+    * @deprecated since 4.0.0: use `findFirstOrThrow` method instead
+    */
+    rejectOnNotFound?: RejectOnNotFound
+  }
+      
+
+  /**
+   * PrizePool findFirstOrThrow
+   */
+  export type PrizePoolFindFirstOrThrowArgs = {
+    /**
+     * Select specific fields to fetch from the PrizePool
+     * 
+    **/
+    select?: PrizePoolSelect | null
+    /**
+     * Filter, which PrizePool to fetch.
+     * 
+    **/
+    where?: PrizePoolWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PrizePools to fetch.
+     * 
+    **/
+    orderBy?: Enumerable<PrizePoolOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PrizePools.
+     * 
+    **/
+    cursor?: PrizePoolWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PrizePools from the position of the cursor.
+     * 
+    **/
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PrizePools.
+     * 
+    **/
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PrizePools.
+     * 
+    **/
+    distinct?: Enumerable<PrizePoolScalarFieldEnum>
+  }
+
+
+  /**
+   * PrizePool findMany
+   */
+  export type PrizePoolFindManyArgs = {
+    /**
+     * Select specific fields to fetch from the PrizePool
+     * 
+    **/
+    select?: PrizePoolSelect | null
+    /**
+     * Filter, which PrizePools to fetch.
+     * 
+    **/
+    where?: PrizePoolWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PrizePools to fetch.
+     * 
+    **/
+    orderBy?: Enumerable<PrizePoolOrderByWithRelationInput>
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PrizePools.
+     * 
+    **/
+    cursor?: PrizePoolWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PrizePools from the position of the cursor.
+     * 
+    **/
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PrizePools.
+     * 
+    **/
+    skip?: number
+    distinct?: Enumerable<PrizePoolScalarFieldEnum>
+  }
+
+
+  /**
+   * PrizePool create
+   */
+  export type PrizePoolCreateArgs = {
+    /**
+     * Select specific fields to fetch from the PrizePool
+     * 
+    **/
+    select?: PrizePoolSelect | null
+    /**
+     * The data needed to create a PrizePool.
+     * 
+    **/
+    data: XOR<PrizePoolCreateInput, PrizePoolUncheckedCreateInput>
+  }
+
+
+  /**
+   * PrizePool createMany
+   */
+  export type PrizePoolCreateManyArgs = {
+    /**
+     * The data used to create many PrizePools.
+     * 
+    **/
+    data: Enumerable<PrizePoolCreateManyInput>
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * PrizePool update
+   */
+  export type PrizePoolUpdateArgs = {
+    /**
+     * Select specific fields to fetch from the PrizePool
+     * 
+    **/
+    select?: PrizePoolSelect | null
+    /**
+     * The data needed to update a PrizePool.
+     * 
+    **/
+    data: XOR<PrizePoolUpdateInput, PrizePoolUncheckedUpdateInput>
+    /**
+     * Choose, which PrizePool to update.
+     * 
+    **/
+    where: PrizePoolWhereUniqueInput
+  }
+
+
+  /**
+   * PrizePool updateMany
+   */
+  export type PrizePoolUpdateManyArgs = {
+    /**
+     * The data used to update PrizePools.
+     * 
+    **/
+    data: XOR<PrizePoolUpdateManyMutationInput, PrizePoolUncheckedUpdateManyInput>
+    /**
+     * Filter which PrizePools to update
+     * 
+    **/
+    where?: PrizePoolWhereInput
+  }
+
+
+  /**
+   * PrizePool upsert
+   */
+  export type PrizePoolUpsertArgs = {
+    /**
+     * Select specific fields to fetch from the PrizePool
+     * 
+    **/
+    select?: PrizePoolSelect | null
+    /**
+     * The filter to search for the PrizePool to update in case it exists.
+     * 
+    **/
+    where: PrizePoolWhereUniqueInput
+    /**
+     * In case the PrizePool found by the `where` argument doesn't exist, create a new PrizePool with this data.
+     * 
+    **/
+    create: XOR<PrizePoolCreateInput, PrizePoolUncheckedCreateInput>
+    /**
+     * In case the PrizePool was found with the provided `where` argument, update it with this data.
+     * 
+    **/
+    update: XOR<PrizePoolUpdateInput, PrizePoolUncheckedUpdateInput>
+  }
+
+
+  /**
+   * PrizePool delete
+   */
+  export type PrizePoolDeleteArgs = {
+    /**
+     * Select specific fields to fetch from the PrizePool
+     * 
+    **/
+    select?: PrizePoolSelect | null
+    /**
+     * Filter which PrizePool to delete.
+     * 
+    **/
+    where: PrizePoolWhereUniqueInput
+  }
+
+
+  /**
+   * PrizePool deleteMany
+   */
+  export type PrizePoolDeleteManyArgs = {
+    /**
+     * Filter which PrizePools to delete
+     * 
+    **/
+    where?: PrizePoolWhereInput
+  }
+
+
+  /**
+   * PrizePool without action
+   */
+  export type PrizePoolArgs = {
+    /**
+     * Select specific fields to fetch from the PrizePool
+     * 
+    **/
+    select?: PrizePoolSelect | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -2805,6 +3846,19 @@ export namespace Prisma {
   };
 
   export type HeroListScalarFieldEnum = (typeof HeroListScalarFieldEnum)[keyof typeof HeroListScalarFieldEnum]
+
+
+  export const PrizePoolScalarFieldEnum: {
+    id: 'id',
+    participant: 'participant',
+    place: 'place',
+    prize: 'prize',
+    date: 'date',
+    region: 'region',
+    annualEdition: 'annualEdition'
+  };
+
+  export type PrizePoolScalarFieldEnum = (typeof PrizePoolScalarFieldEnum)[keyof typeof PrizePoolScalarFieldEnum]
 
 
   export const QueryMode: {
@@ -2954,6 +4008,61 @@ export namespace Prisma {
     background_color?: StringWithAggregatesFilter | string
   }
 
+  export type PrizePoolWhereInput = {
+    AND?: Enumerable<PrizePoolWhereInput>
+    OR?: Enumerable<PrizePoolWhereInput>
+    NOT?: Enumerable<PrizePoolWhereInput>
+    id?: IntFilter | number
+    participant?: StringFilter | string
+    place?: IntFilter | number
+    prize?: IntFilter | number
+    date?: DateTimeFilter | Date | string
+    region?: EnumRegion_typeFilter | Region_type
+    annualEdition?: EnumAnnual_editionFilter | Annual_edition
+  }
+
+  export type PrizePoolOrderByWithRelationInput = {
+    id?: SortOrder
+    participant?: SortOrder
+    place?: SortOrder
+    prize?: SortOrder
+    date?: SortOrder
+    region?: SortOrder
+    annualEdition?: SortOrder
+  }
+
+  export type PrizePoolWhereUniqueInput = {
+    id?: number
+  }
+
+  export type PrizePoolOrderByWithAggregationInput = {
+    id?: SortOrder
+    participant?: SortOrder
+    place?: SortOrder
+    prize?: SortOrder
+    date?: SortOrder
+    region?: SortOrder
+    annualEdition?: SortOrder
+    _count?: PrizePoolCountOrderByAggregateInput
+    _avg?: PrizePoolAvgOrderByAggregateInput
+    _max?: PrizePoolMaxOrderByAggregateInput
+    _min?: PrizePoolMinOrderByAggregateInput
+    _sum?: PrizePoolSumOrderByAggregateInput
+  }
+
+  export type PrizePoolScalarWhereWithAggregatesInput = {
+    AND?: Enumerable<PrizePoolScalarWhereWithAggregatesInput>
+    OR?: Enumerable<PrizePoolScalarWhereWithAggregatesInput>
+    NOT?: Enumerable<PrizePoolScalarWhereWithAggregatesInput>
+    id?: IntWithAggregatesFilter | number
+    participant?: StringWithAggregatesFilter | string
+    place?: IntWithAggregatesFilter | number
+    prize?: IntWithAggregatesFilter | number
+    date?: DateTimeWithAggregatesFilter | Date | string
+    region?: EnumRegion_typeWithAggregatesFilter | Region_type
+    annualEdition?: EnumAnnual_editionWithAggregatesFilter | Annual_edition
+  }
+
   export type UserCreateInput = {
     provider_type: Porvider_type
     provider_userId: number
@@ -3072,6 +4181,73 @@ export namespace Prisma {
     img_url?: StringFieldUpdateOperationsInput | string
     bio?: StringFieldUpdateOperationsInput | string
     background_color?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PrizePoolCreateInput = {
+    participant: string
+    place: number
+    prize: number
+    date: Date | string
+    region: Region_type
+    annualEdition: Annual_edition
+  }
+
+  export type PrizePoolUncheckedCreateInput = {
+    id?: number
+    participant: string
+    place: number
+    prize: number
+    date: Date | string
+    region: Region_type
+    annualEdition: Annual_edition
+  }
+
+  export type PrizePoolUpdateInput = {
+    participant?: StringFieldUpdateOperationsInput | string
+    place?: IntFieldUpdateOperationsInput | number
+    prize?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    region?: EnumRegion_typeFieldUpdateOperationsInput | Region_type
+    annualEdition?: EnumAnnual_editionFieldUpdateOperationsInput | Annual_edition
+  }
+
+  export type PrizePoolUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    participant?: StringFieldUpdateOperationsInput | string
+    place?: IntFieldUpdateOperationsInput | number
+    prize?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    region?: EnumRegion_typeFieldUpdateOperationsInput | Region_type
+    annualEdition?: EnumAnnual_editionFieldUpdateOperationsInput | Annual_edition
+  }
+
+  export type PrizePoolCreateManyInput = {
+    id?: number
+    participant: string
+    place: number
+    prize: number
+    date: Date | string
+    region: Region_type
+    annualEdition: Annual_edition
+  }
+
+  export type PrizePoolUpdateManyMutationInput = {
+    participant?: StringFieldUpdateOperationsInput | string
+    place?: IntFieldUpdateOperationsInput | number
+    prize?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    region?: EnumRegion_typeFieldUpdateOperationsInput | Region_type
+    annualEdition?: EnumAnnual_editionFieldUpdateOperationsInput | Annual_edition
+  }
+
+  export type PrizePoolUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    participant?: StringFieldUpdateOperationsInput | string
+    place?: IntFieldUpdateOperationsInput | number
+    prize?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    region?: EnumRegion_typeFieldUpdateOperationsInput | Region_type
+    annualEdition?: EnumAnnual_editionFieldUpdateOperationsInput | Annual_edition
   }
 
   export type IntFilter = {
@@ -3248,6 +4424,82 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type EnumRegion_typeFilter = {
+    equals?: Region_type
+    in?: Enumerable<Region_type>
+    notIn?: Enumerable<Region_type>
+    not?: NestedEnumRegion_typeFilter | Region_type
+  }
+
+  export type EnumAnnual_editionFilter = {
+    equals?: Annual_edition
+    in?: Enumerable<Annual_edition>
+    notIn?: Enumerable<Annual_edition>
+    not?: NestedEnumAnnual_editionFilter | Annual_edition
+  }
+
+  export type PrizePoolCountOrderByAggregateInput = {
+    id?: SortOrder
+    participant?: SortOrder
+    place?: SortOrder
+    prize?: SortOrder
+    date?: SortOrder
+    region?: SortOrder
+    annualEdition?: SortOrder
+  }
+
+  export type PrizePoolAvgOrderByAggregateInput = {
+    id?: SortOrder
+    place?: SortOrder
+    prize?: SortOrder
+  }
+
+  export type PrizePoolMaxOrderByAggregateInput = {
+    id?: SortOrder
+    participant?: SortOrder
+    place?: SortOrder
+    prize?: SortOrder
+    date?: SortOrder
+    region?: SortOrder
+    annualEdition?: SortOrder
+  }
+
+  export type PrizePoolMinOrderByAggregateInput = {
+    id?: SortOrder
+    participant?: SortOrder
+    place?: SortOrder
+    prize?: SortOrder
+    date?: SortOrder
+    region?: SortOrder
+    annualEdition?: SortOrder
+  }
+
+  export type PrizePoolSumOrderByAggregateInput = {
+    id?: SortOrder
+    place?: SortOrder
+    prize?: SortOrder
+  }
+
+  export type EnumRegion_typeWithAggregatesFilter = {
+    equals?: Region_type
+    in?: Enumerable<Region_type>
+    notIn?: Enumerable<Region_type>
+    not?: NestedEnumRegion_typeWithAggregatesFilter | Region_type
+    _count?: NestedIntFilter
+    _min?: NestedEnumRegion_typeFilter
+    _max?: NestedEnumRegion_typeFilter
+  }
+
+  export type EnumAnnual_editionWithAggregatesFilter = {
+    equals?: Annual_edition
+    in?: Enumerable<Annual_edition>
+    notIn?: Enumerable<Annual_edition>
+    not?: NestedEnumAnnual_editionWithAggregatesFilter | Annual_edition
+    _count?: NestedIntFilter
+    _min?: NestedEnumAnnual_editionFilter
+    _max?: NestedEnumAnnual_editionFilter
+  }
+
   export type EnumPorvider_typeFieldUpdateOperationsInput = {
     set?: Porvider_type
   }
@@ -3266,6 +4518,14 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type EnumRegion_typeFieldUpdateOperationsInput = {
+    set?: Region_type
+  }
+
+  export type EnumAnnual_editionFieldUpdateOperationsInput = {
+    set?: Annual_edition
   }
 
   export type NestedIntFilter = {
@@ -3377,6 +4637,40 @@ export namespace Prisma {
     _count?: NestedIntFilter
     _min?: NestedDateTimeFilter
     _max?: NestedDateTimeFilter
+  }
+
+  export type NestedEnumRegion_typeFilter = {
+    equals?: Region_type
+    in?: Enumerable<Region_type>
+    notIn?: Enumerable<Region_type>
+    not?: NestedEnumRegion_typeFilter | Region_type
+  }
+
+  export type NestedEnumAnnual_editionFilter = {
+    equals?: Annual_edition
+    in?: Enumerable<Annual_edition>
+    notIn?: Enumerable<Annual_edition>
+    not?: NestedEnumAnnual_editionFilter | Annual_edition
+  }
+
+  export type NestedEnumRegion_typeWithAggregatesFilter = {
+    equals?: Region_type
+    in?: Enumerable<Region_type>
+    notIn?: Enumerable<Region_type>
+    not?: NestedEnumRegion_typeWithAggregatesFilter | Region_type
+    _count?: NestedIntFilter
+    _min?: NestedEnumRegion_typeFilter
+    _max?: NestedEnumRegion_typeFilter
+  }
+
+  export type NestedEnumAnnual_editionWithAggregatesFilter = {
+    equals?: Annual_edition
+    in?: Enumerable<Annual_edition>
+    notIn?: Enumerable<Annual_edition>
+    not?: NestedEnumAnnual_editionWithAggregatesFilter | Annual_edition
+    _count?: NestedIntFilter
+    _min?: NestedEnumAnnual_editionFilter
+    _max?: NestedEnumAnnual_editionFilter
   }
 
 

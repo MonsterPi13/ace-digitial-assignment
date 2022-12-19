@@ -97,6 +97,16 @@ exports.Prisma.HeroListScalarFieldEnum = makeEnum({
   background_color: 'background_color'
 });
 
+exports.Prisma.PrizePoolScalarFieldEnum = makeEnum({
+  id: 'id',
+  participant: 'participant',
+  place: 'place',
+  prize: 'prize',
+  date: 'date',
+  region: 'region',
+  annualEdition: 'annualEdition'
+});
+
 exports.Prisma.QueryMode = makeEnum({
   default: 'default',
   insensitive: 'insensitive'
@@ -123,13 +133,37 @@ exports.Prisma.UserScalarFieldEnum = makeEnum({
   html_url: 'html_url',
   created_at: 'created_at'
 });
+exports.Annual_edition = makeEnum({
+  Ti11: 'Ti11',
+  Ti10: 'Ti10',
+  Ti9: 'Ti9',
+  Ti8: 'Ti8',
+  Ti7: 'Ti7',
+  Ti6: 'Ti6',
+  Ti5: 'Ti5',
+  Ti4: 'Ti4',
+  Ti3: 'Ti3',
+  Ti2: 'Ti2',
+  Ti1: 'Ti1'
+});
+
 exports.Porvider_type = makeEnum({
   github: 'github'
 });
 
+exports.Region_type = makeEnum({
+  WEU: 'WEU',
+  EEU: 'EEU',
+  CN: 'CN',
+  NA: 'NA',
+  SA: 'SA',
+  SEA: 'SEA'
+});
+
 exports.Prisma.ModelName = makeEnum({
   User: 'User',
-  HeroList: 'HeroList'
+  HeroList: 'HeroList',
+  PrizePool: 'PrizePool'
 });
 
 /**

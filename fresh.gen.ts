@@ -3,38 +3,44 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import config from "./deno.json" assert { type: "json" };
-import * as $0 from "./routes/_middleware.ts";
-import * as $1 from "./routes/api/users.ts";
-import * as $2 from "./routes/auth/[provider]/callback.tsx";
-import * as $3 from "./routes/auth/[provider]/index.tsx";
-import * as $4 from "./routes/dashboard/_middleware.ts";
-import * as $5 from "./routes/dashboard/index.tsx";
-import * as $6 from "./routes/index.tsx";
-import * as $7 from "./routes/logout.ts";
+import * as $0 from "./routes/_404.tsx";
+import * as $1 from "./routes/_middleware.ts";
+import * as $2 from "./routes/api/prize_pool.ts";
+import * as $3 from "./routes/api/users.ts";
+import * as $4 from "./routes/auth/[provider]/callback.tsx";
+import * as $5 from "./routes/auth/[provider]/index.tsx";
+import * as $6 from "./routes/dashboard/[id].tsx";
+import * as $7 from "./routes/dashboard/_middleware.ts";
+import * as $8 from "./routes/dashboard/index.ts";
+import * as $9 from "./routes/index.tsx";
+import * as $10 from "./routes/logout.ts";
 import * as $$0 from "./islands/BarChartContainer.tsx";
 import * as $$1 from "./islands/DoughnutChartContainer.tsx";
 import * as $$2 from "./islands/DrawerButton.tsx";
 import * as $$3 from "./islands/LineChartContainer.tsx";
-import * as $$4 from "./islands/PieChartContainer.tsx";
+import * as $$4 from "./islands/TableContainer.tsx";
 import * as $$5 from "./islands/UserAvatarButton.tsx";
 
 const manifest = {
   routes: {
-    "./routes/_middleware.ts": $0,
-    "./routes/api/users.ts": $1,
-    "./routes/auth/[provider]/callback.tsx": $2,
-    "./routes/auth/[provider]/index.tsx": $3,
-    "./routes/dashboard/_middleware.ts": $4,
-    "./routes/dashboard/index.tsx": $5,
-    "./routes/index.tsx": $6,
-    "./routes/logout.ts": $7,
+    "./routes/_404.tsx": $0,
+    "./routes/_middleware.ts": $1,
+    "./routes/api/prize_pool.ts": $2,
+    "./routes/api/users.ts": $3,
+    "./routes/auth/[provider]/callback.tsx": $4,
+    "./routes/auth/[provider]/index.tsx": $5,
+    "./routes/dashboard/[id].tsx": $6,
+    "./routes/dashboard/_middleware.ts": $7,
+    "./routes/dashboard/index.ts": $8,
+    "./routes/index.tsx": $9,
+    "./routes/logout.ts": $10,
   },
   islands: {
     "./islands/BarChartContainer.tsx": $$0,
     "./islands/DoughnutChartContainer.tsx": $$1,
     "./islands/DrawerButton.tsx": $$2,
     "./islands/LineChartContainer.tsx": $$3,
-    "./islands/PieChartContainer.tsx": $$4,
+    "./islands/TableContainer.tsx": $$4,
     "./islands/UserAvatarButton.tsx": $$5,
   },
   baseUrl: import.meta.url,

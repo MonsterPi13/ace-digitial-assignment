@@ -1,11 +1,18 @@
+import { Handlers, PageProps } from "$fresh/server.ts";
 import { Head } from "$fresh/runtime.ts";
+
 import { FunctionalComponent } from "preact";
 import BarChartContainer from "@/islands/BarChartContainer.tsx";
 import LineChartContainer from "@/islands/LineChartContainer.tsx";
-import PieChartContainer from "@/islands/PieChartContainer.tsx";
 import DoughnutChartContainer from "@/islands/DoughnutChartContainer.tsx";
+import TableContainer from "@/islands/TableContainer.tsx";
 
-const DashboardView: FunctionalComponent = () => {
+import Prisma from "@/generated/client/deno/index.d.ts";
+type DashboardProps = {
+  prizeData: Prisma.PrizePool[];
+};
+
+const DashboardView: FunctionalComponent<DashboardProps> = ({ prizeData }) => {
   return (
     <>
       <Head>
@@ -13,15 +20,16 @@ const DashboardView: FunctionalComponent = () => {
       </Head>
       <section class="grid grid-cols-3 grid-rows-2 gap-4 h-full p-8">
         <div class="bg-[#FAF7F0] p-8">
-          <BarChartContainer />
+          <BarChartContainer prizeData={prizeData} />
         </div>
         <div class="bg-[#FAF7F0] p-8">
-          <LineChartContainer />
+          <LineChartContainer prizeData={prizeData} />
         </div>
         <div class="bg-[#FAF7F0] p-8">
-          <DoughnutChartContainer />
+          <DoughnutChartContainer prizeData={prizeData} />
         </div>
-        <div class="col-span-3 bg-[#FAF7F0]">
+        <div class="col-span-3 bg-[#FAF7F0] p-8">
+          <TableContainer prizeData={prizeData} />
         </div>
       </section>
     </>

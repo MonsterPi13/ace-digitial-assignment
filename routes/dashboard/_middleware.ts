@@ -8,6 +8,7 @@ export async function handler(
   _req: Request,
   ctx: MiddlewareHandlerContext<State>,
 ) {
+  return ctx.next();
   if (ctx.state.userId) {
     const user = await prisma.user.findUnique({
       where: {

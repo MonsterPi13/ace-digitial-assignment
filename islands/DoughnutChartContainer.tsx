@@ -1,10 +1,42 @@
 import { useEffect, useRef } from "preact/hooks";
 
-const DoughnutChartContainer = () => {
+import Prisma from "@/generated/client/deno/index.d.ts";
+import { PropsWithPrize } from "@/schemas/PropsWithPrize.ts";
+import { DoughnutChartData } from "@/schemas/PropsWithCharData.ts";
+
+const DoughnutChartContainer = ({ prizeData }: PropsWithPrize) => {
   const chartRef = useRef(null);
+
   useEffect(() => {
     if (chartRef.current) {
       const ctx = chartRef.current;
+
+      const chartDataObject = {
+        "WEU": 0,
+        "EEU": 0,
+        "CN": 0,
+        "SEA": 0,
+        "NA": 0,
+        "SA": 0,
+      };
+
+      if (prizeData) {
+        prizeData.forEach((row) => {
+          if (row.place <= 8) {
+            chartDataObject[row.region]++;
+          }
+        });
+      }
+
+      const chartData: DoughnutChartData[] = [];
+
+      for (const [key, value] of Object.entries(chartDataObject)) {
+        const option = {
+          region: key as Prisma.Region_type,
+          numberOfTopEightTeams: value,
+        };
+        chartData.push(option);
+      }
 
       const CHART_COLORS = {
         red: "rgb(255, 99, 132)",
@@ -17,11 +49,11 @@ const DoughnutChartContainer = () => {
       };
 
       const data = {
-        labels: ["Red", "Orange", "Yellow", "Green", "Blue"],
+        labels: chartData.map((row) => row.region),
         datasets: [
           {
-            label: "Dataset 1",
-            data: [1, 12, 33, 55, 66],
+            label: "Number of top eight teams",
+            data: chartData.map((row) => row.numberOfTopEightTeams),
             backgroundColor: Object.values(CHART_COLORS),
           },
         ],
@@ -37,7 +69,7 @@ const DoughnutChartContainer = () => {
             },
             title: {
               display: true,
-              text: "Chart.js Doughnut Chart",
+              text: "Number of top eight teams",
             },
           },
         },
