@@ -12,17 +12,19 @@ const DrawerButton = () => {
   };
   return (
     <>
-      <div class="text-center">
-        <button class="p-2 mr-2 text-gray-600 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+      <div
+        class="text-center mr-2"
+        data-drawer-target="filter-drawer"
+        data-drawer-show="filter-drawer"
+        aria-controls="filter-drawer"
+      >
+        <button class="p-2  text-gray-600 rounded cursor-pointer hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100">
           <svg
             class="w-6 h-6 cursor-pointer"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
-            data-drawer-target="filter-drawer"
-            data-drawer-show="filter-drawer"
-            aria-controls="filter-drawer"
           >
             <path
               stroke-linecap="round"
