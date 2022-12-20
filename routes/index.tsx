@@ -7,21 +7,17 @@ import { PropsWithLandingPage } from "@/schemas/PropsWithLandingPage.ts";
 import { pageTitle } from "@/signals/index.ts";
 import Layout from "@/layout/index.tsx";
 import LandingView from "@/components/LandingView.tsx";
+import { heroData } from "@/utils/heroData.ts";
 
 export const handler: Handlers<PropsWithLandingPage> = {
-  async GET(req: Request, ctx) {
+  GET(req: Request, ctx) {
     if (ctx.state.userId) {
       return Response.redirect(`${config.base_url}/dashboard`);
     }
 
-    const count = await prisma.heroList.count();
+    const count = heroData.length;
     const randomIndex = Math.floor(Math.random() * count);
-    const heroList = await prisma.heroList.findMany({
-      take: 1,
-      skip: randomIndex,
-    });
-
-    const hero = heroList[0];
+    const hero = heroData[randomIndex];
 
     return ctx.render({ hero });
   },

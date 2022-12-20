@@ -7,7 +7,7 @@ const LandingView: FunctionalComponent<PropsWithLandingPage> = ({ hero }) => {
     <>
       <div class="flex flex-col items-center justify-center mt-8">
         <img
-          class="max-w-lg h-[60vh] rounded-lg transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0"
+          class="h-[60vh] rounded-lg transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0"
           src={hero?.img_url}
           alt={hero?.name}
         />
