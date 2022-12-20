@@ -15,7 +15,8 @@ type DashboardProps = {
 };
 
 const DashboardView: FunctionalComponent<DashboardProps> = ({ prizeData }) => {
-  const imgSrc = `/images/ti/${prizeData[0].annualEdition.toLowerCase()}.jpeg`;
+  const edition = prizeData[0].annualEdition;
+  const imgSrc = `/images/ti/${edition.toLowerCase()}.jpeg`;
   pageTitle.value = "Ti Overview Dashboard";
   return (
     <>
@@ -32,11 +33,13 @@ const DashboardView: FunctionalComponent<DashboardProps> = ({ prizeData }) => {
         <div class="flex items-center bg-[#FAF7F0] p-8">
           <DoughnutChartContainer prizeData={prizeData} />
         </div>
-        <div class="flex items-center col-span-3 bg-[#FAF7F0] p-8">
-          <div class="w-1/2 mr-4">
+        <div class="grid items-center grid-cols-3 grid-rows-1 gap-4 items-center col-span-3 bg-[#FAF7F0]">
+          <div class="w-full py-8 pl-8">
             <img src={imgSrc}></img>
           </div>
-          <TableContainer prizeData={prizeData} />
+          <div class="col-span-2 h-full py-8 pr-8">
+            <TableContainer prizeData={prizeData} />
+          </div>
         </div>
       </section>
     </>
