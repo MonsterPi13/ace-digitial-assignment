@@ -3,11 +3,15 @@ import { FunctionalComponent } from "preact";
 import { PropsWithLandingPage } from "../schemas/PropsWithLandingPage.ts";
 
 const LandingView: FunctionalComponent<PropsWithLandingPage> = ({ hero }) => {
+  const animationClasses = Math.random() < 0.5
+    ? "blur-sm hover:blur-none"
+    : "filter grayscale hover:grayscale-0";
+
   return (
     <>
       <div class="flex flex-col items-center justify-center mt-8">
         <img
-          class="h-[60vh] rounded-lg transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0"
+          class={`h-[60vh] rounded-lg transition-all duration-300 cursor-pointer ${animationClasses}`}
           src={hero?.img_url}
           alt={hero?.name}
         />
