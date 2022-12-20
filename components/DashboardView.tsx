@@ -8,12 +8,11 @@ import LineChartContainer from "@/islands/LineChartContainer.tsx";
 import DoughnutChartContainer from "@/islands/DoughnutChartContainer.tsx";
 import TableContainer from "@/islands/TableContainer.tsx";
 
-import Prisma from "@/generated/client/deno/index.d.ts";
-type DashboardProps = {
-  prizeData: Prisma.PrizePool[];
-};
+import { PropsWithDashboardPage } from "@/schemas/PageProps.ts";
 
-const DashboardView: FunctionalComponent<DashboardProps> = ({ prizeData }) => {
+const DashboardView: FunctionalComponent<PropsWithDashboardPage> = (
+  { prizeData },
+) => {
   const edition = prizeData[0].annualEdition;
   const imgSrc = `/images/ti/${edition.toLowerCase()}.jpeg`;
   pageTitle.value = "Ti Overview Dashboard";

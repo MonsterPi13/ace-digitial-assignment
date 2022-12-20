@@ -1,19 +1,19 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 
 import Layout from "@/layout/index.tsx";
+import DashboardView from "@/components/DashboardView.tsx";
 
 import Prisma from "@/generated/client/deno/index.d.ts";
 import State from "@/schemas/State.ts";
-import { PropsWithUser } from "@/schemas/PropsWithUser.ts";
-import DashboardView from "@/components/DashboardView.tsx";
+import {
+  PropsWithDashboardPage,
+  PropsWithLayout,
+} from "@/schemas/PageProps.ts";
+
 import prisma from "@/utils/prisma.ts";
 import config from "@/utils/config.ts";
 
-type DashboardPageProps = {
-  prizeData: Prisma.PrizePool[];
-} & PropsWithUser;
-
-export const handler: Handlers<DashboardPageProps, State> = {
+export const handler: Handlers<PropsWithDashboardPage, State> = {
   async GET(req, ctx) {
     const querySourceMap = new Map([
       ["ti11", "Ti11"],
@@ -53,9 +53,9 @@ export const handler: Handlers<DashboardPageProps, State> = {
   },
 };
 
-const Dashboard = ({ data }: PageProps<DashboardPageProps>) => {
+const Dashboard = ({ data }: PageProps<PropsWithDashboardPage>) => {
   return (
-    <Layout isShownDrawButton={true} user={data.user}>
+    <Layout user={data.user}>
       <DashboardView prizeData={data.prizeData} />
     </Layout>
   );

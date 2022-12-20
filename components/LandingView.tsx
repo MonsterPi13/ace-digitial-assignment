@@ -1,6 +1,6 @@
 import { FunctionalComponent } from "preact";
 
-import { PropsWithLandingPage } from "../schemas/PropsWithLandingPage.ts";
+import { PropsWithLandingPage } from "@/schemas/PageProps.ts";
 
 const LandingView: FunctionalComponent<PropsWithLandingPage> = ({ hero }) => {
   const animationClasses = Math.random() < 0.5

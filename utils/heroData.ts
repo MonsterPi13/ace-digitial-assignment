@@ -1,6 +1,6 @@
-import { Prisma } from "@/generated/client/deno/index.d.ts";
+import { Hero } from "@/schemas/Hero.ts";
 
-export const heroData: Prisma.HeroListCreateInput[] = [
+export const heroData: Hero[] = [
   {
     name: "crystal_maiden",
     img_url: "/images/illustration/crystal_maiden.jpg",

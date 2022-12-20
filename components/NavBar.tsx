@@ -1,7 +1,7 @@
 import { FunctionalComponent } from "preact";
 import { signal } from "@preact/signals";
 
-import { PropsWithUser } from "@/schemas/PropsWithUser.ts";
+import { PropsWithUser } from "@/schemas/PageProps.ts";
 import UserAvatarButton from "@/islands/UserAvatarButton.tsx";
 import DrawerButton from "@/islands/DrawerButton.tsx";
 

@@ -1,7 +1,7 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 
 import config from "@/utils/config.ts";
-import { PropsWithLandingPage } from "@/schemas/PropsWithLandingPage.ts";
+import { PropsWithLandingPage } from "@/schemas/PageProps.ts";
 
 import { pageTitle } from "@/signals/index.ts";
 import Layout from "@/layout/index.tsx";
