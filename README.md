@@ -1,6 +1,5 @@
 # ACE Digital Assignment
 
-**A project based on `Deno + fresh` framework**
 ![sample image](./screenshot-sample.png)
 
 ## Project URL
