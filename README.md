@@ -2,7 +2,7 @@
 
 ![sample image](./screenshot-sample.png)
 
-## Online Address
+## Online address
 
 [https://ace-digital-assignment.deno.dev/](https://ace-digital-assignment.deno.dev/)
 
