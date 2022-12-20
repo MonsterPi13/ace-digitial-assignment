@@ -24,7 +24,7 @@ const Layout: FunctionalComponent<PropsWithLayout> = (
       </Head>
       <div class={`flex flex-col w-screen h-screen ${bgColor}`}>
         <NavBar
-          isShownDrawButton={!!isShownDrawButton}
+          isShownDrawButton={!isShownDrawButton ? false : true}
           user={user}
         />
 

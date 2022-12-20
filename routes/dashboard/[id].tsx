@@ -55,7 +55,7 @@ export const handler: Handlers<PropsWithDashboardPage, State> = {
 
 const Dashboard = ({ data }: PageProps<PropsWithDashboardPage>) => {
   return (
-    <Layout user={data.user}>
+    <Layout isShownDrawButton={true} user={data.user}>
       <DashboardView prizeData={data.prizeData} />
     </Layout>
   );
