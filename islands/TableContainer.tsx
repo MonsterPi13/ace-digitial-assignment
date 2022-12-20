@@ -1,4 +1,4 @@
-import { PropsWithPrize } from "@/schemas/PropsWithPrize.ts";
+import { PropsWithPrize } from "@/schemas/PageProps.ts";
 
 const TableContainer = ({ prizeData }: PropsWithPrize) => {
   return (

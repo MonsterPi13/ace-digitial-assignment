@@ -10,9 +10,11 @@ export interface PropsWithUser {
   user?: Prisma.User;
 }
 
-export type PropsWithDashboardPage = {
+export interface PropsWithPrize {
   prizeData: Prisma.PrizePool[];
-} & PropsWithUser;
+}
+
+export type PropsWithDashboardPage = PropsWithPrize & PropsWithUser;
 
 export type PropsWithLayout =
   & {

@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "preact/hooks";
 
 import Prisma from "@/generated/client/deno/index.d.ts";
-import { PropsWithPrize } from "@/schemas/PropsWithPrize.ts";
-import { BarChartData } from "@/schemas/PropsWithCharData.ts";
+import { PropsWithPrize } from "@/schemas/PageProps.ts";
+import { BarChartData } from "@/schemas/ChartData.ts";
 
 const ChartSample = ({ prizeData }: PropsWithPrize) => {
   const chartDataObject = {
