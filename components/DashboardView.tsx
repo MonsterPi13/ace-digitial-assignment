@@ -1,4 +1,3 @@
-import { Handlers, PageProps } from "$fresh/server.ts";
 import { Head } from "$fresh/runtime.ts";
 
 import { FunctionalComponent } from "preact";

@@ -1,13 +1,5 @@
 import prisma from "@/utils/prisma.ts";
-import { heroData, prizeData } from "./seed.ts";
-
-for (const data of heroData) {
-  await prisma.heroList.create({
-    data,
-  });
-}
-
-console.log("hero data init success.");
+import { prizeData } from "./seed.ts";
 
 for (const data of prizeData) {
   await prisma.prizePool.create({

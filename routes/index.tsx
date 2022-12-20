@@ -1,7 +1,6 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 
 import config from "@/utils/config.ts";
-import prisma from "@/utils/prisma.ts";
 import { PropsWithLandingPage } from "@/schemas/PropsWithLandingPage.ts";
 
 import { pageTitle } from "@/signals/index.ts";

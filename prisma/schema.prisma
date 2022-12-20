@@ -49,14 +49,6 @@ model User {
   created_at        DateTime        @default(now())
 }
 
-model HeroList {
-  id                Int     @id @default(autoincrement())
-  name              String
-  img_url           String
-  bio               String
-  background_color  String
-}
-
 model PrizePool {
   id                Int     @id @default(autoincrement())
   participant       String

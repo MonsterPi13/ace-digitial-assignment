@@ -16,7 +16,7 @@ const LandingView: FunctionalComponent<PropsWithLandingPage> = ({ hero }) => {
           alt={hero?.name}
         />
 
-        <blockquote class="max-w-lg p-4 my-4 bg-gray-800 border-l-4 border-gray-500">
+        <blockquote class="max-w-4xl p-4 my-4 bg-gray-800 border-l-4 border-gray-500">
           <p class="text-xl italic font-medium leading-relaxed text-white">
             {hero?.bio}
           </p>
