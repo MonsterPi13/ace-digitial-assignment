@@ -4,6 +4,7 @@ import config from "@/utils/config.ts";
 import prisma from "@/utils/prisma.ts";
 import { PropsWithLandingPage } from "@/schemas/PropsWithLandingPage.ts";
 
+import { pageTitle } from "@/signals/index.ts";
 import Layout from "@/layout/index.tsx";
 import LandingView from "@/components/LandingView.tsx";
 
@@ -27,6 +28,8 @@ export const handler: Handlers<PropsWithLandingPage> = {
 };
 
 export default function Home({ data }: PageProps<PropsWithLandingPage>) {
+  pageTitle.value = "Ti Overview";
+
   return (
     <Layout isShownDrawButton={false} hero={data.hero}>
       <LandingView hero={data.hero} />

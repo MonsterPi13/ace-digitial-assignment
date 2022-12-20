@@ -4,6 +4,7 @@ import NavBar from "@/components/NavBar.tsx";
 import { FunctionalComponent } from "preact";
 import { PropsWithUser } from "@/schemas/PropsWithUser.ts";
 import { PropsWithLandingPage } from "@/schemas/PropsWithLandingPage.ts";
+import { pageTitle } from "@/signals/index.ts";
 
 type LayoutProps =
   & {
@@ -20,6 +21,7 @@ const Layout: FunctionalComponent<LayoutProps> = (
   return (
     <>
       <Head>
+        <title>{pageTitle.value}</title>
         <link
           rel="stylesheet"
           href="https://unpkg.com/flowbite@1.5.5/dist/flowbite.min.css"

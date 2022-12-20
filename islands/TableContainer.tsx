@@ -11,13 +11,13 @@ const TableContainer = ({ prizeData }: PropsWithPrize) => {
                 Place
               </th>
               <th scope="col" class="py-3 px-6">
-                $ USD
-              </th>
-              <th scope="col" class="py-3 px-6">
                 Participant
               </th>
               <th scope="col" class="py-3 px-6">
                 Region
+              </th>
+              <th scope="col" class="py-3 px-6">
+                $ USD
               </th>
             </tr>
           </thead>
@@ -35,13 +35,13 @@ const TableContainer = ({ prizeData }: PropsWithPrize) => {
                   {row.place}
                 </th>
                 <td class="py-4 px-6">
-                  {`$${row.prize.toLocaleString()}`}
-                </td>
-                <td class="py-4 px-6">
                   {row.participant}
                 </td>
                 <td class="py-4 px-6">
                   {row.region}
+                </td>
+                <td class="py-4 px-6">
+                  {`$${row.prize.toLocaleString()}`}
                 </td>
               </tr>
             ))}

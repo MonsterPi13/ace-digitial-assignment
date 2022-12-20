@@ -7,6 +7,7 @@ import State from "@/schemas/State.ts";
 import { PropsWithUser } from "@/schemas/PropsWithUser.ts";
 import DashboardView from "@/components/DashboardView.tsx";
 import prisma from "@/utils/prisma.ts";
+import config from "@/utils/config.ts";
 
 type DashboardPageProps = {
   prizeData: Prisma.PrizePool[];
@@ -28,10 +29,10 @@ export const handler: Handlers<DashboardPageProps, State> = {
       ["ti1", "Ti1"],
     ]);
 
-    const query = querySourceMap.get(ctx.params.id);
+    const query = querySourceMap.get(ctx.params.id.toLowerCase());
 
     if (!query) {
-      return Response.redirect("/404");
+      return Response.redirect(`${config.base_url}/404`);
     }
 
     let prizeData: Prisma.PrizePool[] = [];
