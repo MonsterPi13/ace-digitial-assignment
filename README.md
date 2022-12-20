@@ -1,6 +1,11 @@
 # ACE Digital Assignment
 
 **A project based on `Deno + fresh` framework**
+![sample image](./screenshot-sample.png)
+
+## Project URL
+
+[https://ace-digital-assignment.deno.dev/](https://ace-digital-assignment.deno.dev/)
 
 ## Features
 
@@ -9,12 +14,12 @@
 
 ## Steps
 
-### 1.Install Deno
+### 1. Install Deno
 
 This project uses Deno! Install for your OS by following the instructions
 [here](https://deno.land/#installation)
 
-### 2.Init environment Variables
+### 2. Init environment Variables
 
 Copy the .env.sample file into .env
 
@@ -22,7 +27,7 @@ Copy the .env.sample file into .env
 cp .env.sample .env
 ```
 
-### 3.Init database
+### 3. Init database
 
 - Get your database URL link from `railway` or `supabase` or any other database
   provider
@@ -53,7 +58,7 @@ deno task generate:client
   deno task generate:data
   ```
 
-### Start the server
+## Start the server
 
 Start the project (this will install dependencies on first run):
 
